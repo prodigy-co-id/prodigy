@@ -18,7 +18,7 @@ interface TryoutInfoProps {
           </div>
         </div>
         <div className="bg-white rounded-xl p-4">
-          <p className="text-gray-600">Time duration given</p>
+          <p className="text-gray-600">Durasi waktu pengerjaan:</p>
           <p className="font-medium">{duration}</p>
         </div>
       </div>

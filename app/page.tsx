@@ -6,6 +6,32 @@ import Image from 'next/image'
 
 
 export default function DashboardPage() {
+  const router = useRouter()
+
+  const [currentCurrency] = useState(0) // Curr balance
+  const [initialValueInt] = useState(0) // Int type stat
+
+  const [hasTarget, setHasTarget] = useState<boolean>(false)
+  const [targets, setTarget] = useState<targetPTN[]>([])
+
+  {/* Fetch data API univ dan jurusan*/}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('api/targetptn');
+        const data: targetPTN[] = await response.json(); // Type the response
+        if (data.length > 0) {
+          setHasTarget(true);
+          setTarget(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch targets:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
   return (
     <div className="min-h-screen bg-violet-50">
       {/* Dashboard Section */}
